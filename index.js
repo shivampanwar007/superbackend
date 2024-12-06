@@ -15,8 +15,9 @@ const app = express();
 // Enable CORS for the frontend domain
 app.use(cors({
   origin: 'https://superfrontend.vercel.app', // Your frontend's URL
-  methods: 'GET,POST,PUT,DELETE', // HTTP methods allowed
-  credentials: true // Allow cookies or authentication headers
+  methods: 'GET,POST,PUT,DELETE,OPTIONS', // Allowed HTTP methods
+  allowedHeaders: ['Content-Type', 'Authorization'], // Allow specific headers
+  credentials: true // Include cookies/auth headers if required
 }));
 
 // Handle preflight requests globally
