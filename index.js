@@ -14,8 +14,14 @@ const app = express();
 
 // Enable CORS for the frontend domain
 app.use(cors({
-  origin: 'https://superfrontend.vercel.app'
+  origin: 'https://superfrontend.vercel.app', // Your frontend's URL
+  methods: 'GET,POST,PUT,DELETE', // HTTP methods allowed
+  credentials: true // Allow cookies or authentication headers
 }));
+
+// Handle preflight requests globally
+app.options('*', cors()); // Allow preflight for all routes
+
 
 app.use(express.json({ limit: "50mb" }));
 
